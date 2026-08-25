@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ລາຍການສັດ</title>
+<title>ຟາມສັດອ້າຍຈ່ອຍ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Lao:wght@400;600;700&family=Noto+Sans+Lao:wght@400;500;600&display=swap" rel="stylesheet">
@@ -385,7 +385,7 @@
   </div>
 
   <header>
-    <span class="eyebrow">คอลเลกชันของเรา</span>
+    <span class="eyebrow">ສັດລ້ຽງຂອງເຮົາ</span>
     <h1>ລາຍການສັດ</h1>
     <p>ສັດແຕ່ລະໂຕມີທີ່ມາຂອງມັນເອງ — ເລືອກເບິ່ງ ເລື່ອງລາວ ແລະ ລາຍລະຽດສັດແຕ່ລະໂຕທາງດ້ານລຸ່ມໄດ້ເລີຍ</p>
   </header>
@@ -424,7 +424,7 @@
       <div class="name-plate">
         <h2>ເສືອສະມິງ</h2>
         <div class="price">ລາຄາ 1.000.000.000.000 ₭</div>
-        <button type="button" class="video-link" data-video="https://www.youtube.com/embed/VIDEO_ID_2">
+        <button type="button" class="video-link" data-video="https://drive.google.com/file/d/1kVIgxlqR1gvujVIs5AXbHCjMYhvbpX6j/view?usp=sharing">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
           ເບິ່ງວິດີໂອ
         </button>
@@ -448,7 +448,7 @@
       <div class="name-plate">
         <h2>ເສືອສະມິງ</h2>
         <div class="price">ລາຄາ 1.000.000.000.000 ₭</div>
-        <button type="button" class="video-link" data-video="https://www.youtube.com/embed/VIDEO_ID_3">
+        <button type="button" class="video-link" data-video="https://drive.google.com/file/d/1kVIgxlqR1gvujVIs5AXbHCjMYhvbpX6j/view?usp=sharing">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
           ເບິ່ງວິດີໂອ
         </button>
@@ -472,7 +472,7 @@
       <div class="name-plate">
         <h2>ເສືອສະມິງ</h2>
         <div class="price">ລາຄາ 1.000.000.000.000 ₭</div>
-        <button type="button" class="video-link" data-video="https://www.youtube.com/embed/VIDEO_ID_4">
+        <button type="button" class="video-link" data-video="https://drive.google.com/file/d/1kVIgxlqR1gvujVIs5AXbHCjMYhvbpX6j/view?usp=sharing">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
           ເບິ່ງວິດີໂອ
         </button>
@@ -491,14 +491,14 @@
   </div>
 
   <div class="cta-wrap">
-    <a href="#" class="cta">สั่งซื้อเลย</a>
-    <div class="cta-note">คลิกเพื่อสั่งซื้อหรือติดต่อสอบถาม</div>
+    <a href="#" class="cta">ສັ່ງຊື້ເລີຍ</a>
+    <div class="cta-note">ຄິກເພື່ອສັ່ງຊື້ ຫຼື ຕິດສອບຖາມ</div>
   </div>
 
   <!-- ===== Video Modal ===== -->
   <div class="video-modal" id="videoModal">
     <div class="video-modal-box">
-      <button type="button" class="video-modal-close" id="videoModalClose" aria-label="ปิด">&times;</button>
+      <button type="button" class="video-modal-close" id="videoModalClose" aria-label="ປິດ">&times;</button>
       <div class="video-modal-frame" id="videoModalFrame"></div>
     </div>
   </div>
@@ -515,7 +515,7 @@
       }
 
       function getGoogleDriveEmbedUrl(url) {
-        // รองรับลิงก์แบบ .../file/d/FILE_ID/view... หรือ ...?id=FILE_ID
+        // ຮອງຮັບລິ້ງແບບ .../file/d/FILE_ID/view... ຫຼື ...?id=FILE_ID
         const match = url.match(/drive\.google\.com\/file\/d\/([^/]+)/) ||
                       url.match(/[?&]id=([^&]+)/);
         if (match && /drive\.google\.com/i.test(url)) {
