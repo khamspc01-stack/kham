@@ -368,6 +368,31 @@
     background: rgba(246,239,227,0.12);
     border-color: var(--gold);
   }
+  .card-image {
+  position: relative; /* มีอยู่แล้ว ไม่ต้องเพิ่มซ้ำ */
+}
+
+.sold-badge {
+  position: absolute;
+  inset: 0;
+  background: rgba(27,36,30,0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.sold-badge span {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 20px;
+  color: #F6EFE3;
+  border: 2px solid var(--gold);
+  padding: 8px 24px;
+  border-radius: 999px;
+  letter-spacing: 0.08em;
+  transform: rotate(-8deg);
+}
 </style>
 </head>
 <body>
