@@ -8,14 +8,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Lao:wght@400;600;700&family=Noto+Sans+Lao:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  /* ============================================================
-     🔤 ฟอนต์: ถ้าจะเปลี่ยนฟอนต์เอง ให้แก้ไข 2 จุดนี้
-     1) ลิงก์ Google Fonts ด้านบน (แท็ก <link> ที่มี fonts.googleapis.com)
-     2) ตัวแปร --font-heading และ --font-body ด้านล่างนี้
-     ============================================================ */
   :root {
-    --font-heading: 'Noto Serif Lao', serif;   /* ฟอนต์หัวข้อ/ชื่อสินค้า/ชื่อร้าน */
-    --font-body: 'Noto Sans Lao', sans-serif;  /* ฟอนต์เนื้อหาทั่วไป */
+    --font-heading: 'Noto Serif Lao', serif;
+    --font-body: 'Noto Sans Lao', sans-serif;
 
     --bg: #1B241E;
     --card-bg: #F6EFE3;
@@ -31,25 +26,21 @@
   * { box-sizing: border-box; }
 
   body {
-  margin: 0;
-  background-color: var(--bg);
-  background-image:
-    linear-gradient(rgba(27,36,30,0.75), rgba(27,36,30,0.75)),
-    url('bg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  font-family: var(--font-body);
-  color: var(--ink);
-  padding: 0 0 80px;
-}
+    margin: 0;
+    background-color: var(--bg);
+    background-image:
+      linear-gradient(rgba(27,36,30,0.75), rgba(27,36,30,0.75)),
+      url('bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    font-family: var(--font-body);
+    color: var(--ink);
+    padding: 0 0 80px;
+  }
 
-  /* ============================================================
-     🏷️ ส่วนหัว: โลโก้ + ชื่อร้าน
-     - เปลี่ยน src ของ .brand-logo img เป็นไฟล์โลโก้ของคุณ
-     - เปลี่ยนข้อความใน .brand-name เป็นชื่อร้านของคุณ
-     ============================================================ */
+  /* ---------- Brand ---------- */
   .brand-bar {
     display: flex;
     flex-direction: column;
@@ -57,352 +48,222 @@
     gap: 14px;
     padding-top: 48px;
   }
-
   .brand-logo {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    overflow: hidden;
+    width: 140px; height: 140px; border-radius: 50%; overflow: hidden;
     background: rgba(246,239,227,0.08);
     border: 1px solid rgba(200,155,60,0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
   }
-
-  .brand-logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
+  .brand-logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .brand-name {
-    font-family: var(--font-heading);
-    font-weight: 700;
+    font-family: var(--font-heading); font-weight: 700;
     font-size: clamp(26px, 3.6vw, 36px);
-    letter-spacing: 0.06em;
-    color: var(--gold);
-    text-align: center;
-    margin: 0;
+    letter-spacing: 0.06em; color: var(--gold); text-align: center; margin: 0;
   }
 
-  header {
-    text-align: center;
-    padding: 28px 24px 48px;
-  }
-
+  header { text-align: center; padding: 28px 24px 48px; }
   .eyebrow {
-    display: inline-block;
-    font-family: var(--font-body);
-    font-size: 13px;
-    letter-spacing: 0.25em;
-    color: var(--gold);
+    display: inline-block; font-family: var(--font-body); font-size: 13px;
+    letter-spacing: 0.25em; color: var(--gold);
     border: 1px solid rgba(200,155,60,0.4);
-    padding: 6px 18px;
-    border-radius: 999px;
-    margin-bottom: 22px;
+    padding: 6px 18px; border-radius: 999px; margin-bottom: 22px;
   }
-
   h1 {
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: clamp(32px, 5vw, 52px);
-    color: #F6EFE3;
-    margin: 0 0 12px;
+    font-family: var(--font-heading); font-weight: 700;
+    font-size: clamp(32px, 5vw, 52px); color: #F6EFE3; margin: 0 0 12px;
   }
-
   header p {
-    color: rgba(246,239,227,0.65);
-    font-size: 16px;
-    max-width: 480px;
-    margin: 0 auto;
-    line-height: 1.7;
+    color: rgba(246,239,227,0.65); font-size: 16px; max-width: 480px;
+    margin: 0 auto; line-height: 1.7;
   }
 
+  /* ---------- Grid ---------- */
   .gallery {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 0 24px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px;
+    max-width: 1080px; margin: 0 auto; padding: 0 24px;
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px;
   }
-
-  @media (max-width: 720px) {
-    .gallery { grid-template-columns: 1fr; }
-  }
+  @media (max-width: 720px) { .gallery { grid-template-columns: 1fr; } }
 
   .card {
-    background: var(--card-bg);
-    border-radius: 4px;
-    overflow: hidden;
+    background: var(--card-bg); border-radius: 4px; overflow: hidden;
     box-shadow: 0 18px 40px rgba(0,0,0,0.35);
-    display: flex;
-    flex-direction: column;
+    display: flex; flex-direction: column;
     transition: transform 0.35s ease, box-shadow 0.35s ease;
   }
-
-  .card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 26px 54px rgba(0,0,0,0.45);
-  }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 26px 54px rgba(0,0,0,0.45); }
+  .card:focus-within .frame-corner,
+  .card:hover .frame-corner { border-color: var(--gold); }
 
   .card-image {
-    position: relative;
-    aspect-ratio: 4 / 3;
-    background: linear-gradient(135deg, #3a3226, #241f18);
-    overflow: hidden;
+    position: relative; aspect-ratio: 4 / 3;
+    background: linear-gradient(135deg, #3a3226, #241f18); overflow: hidden;
+  }
+  .card-image img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    filter: sepia(10%) saturate(105%);
+    transition: transform 0.6s ease;
+  }
+  .card:hover .card-image img { transform: scale(1.05); }
+
+  /* soft base shadow so the name always reads clearly even on a light photo */
+  .card-image::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(20,16,10,0.55) 0%, rgba(20,16,10,0) 38%);
+    pointer-events: none;
+    z-index: 1;
   }
 
-  .card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+  /* engraved corner frame, trophy-plaque feel */
+  .frame-corner {
+    position: absolute;
+    width: 22px; height: 22px;
+    border-color: rgba(246,239,227,0.8);
+    z-index: 2;
+    pointer-events: none;
   }
+  .frame-corner.tl { top: 12px; left: 12px; border-top: 2px solid; border-left: 2px solid; }
+  .frame-corner.br { bottom: 12px; right: 12px; border-bottom: 2px solid; border-right: 2px solid; }
 
   .index-tag {
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    background: rgba(27,36,30,0.75);
-    color: var(--gold);
-    font-family: var(--font-heading);
-    font-size: 12px;
-    letter-spacing: 0.15em;
-    padding: 5px 12px;
-    border-radius: 999px;
-    border: 1px solid rgba(200,155,60,0.5);
+    position: absolute; top: 12px; right: 12px;
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #E0B65A, var(--gold-dim) 75%);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.4), inset 0 0 0 2px rgba(27,36,30,0.3);
+    color: #1B241E;
+    font-family: var(--font-heading); font-weight: 700; font-size: 13px;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 2;
+  }
+
+  .sold-badge {
+    position: absolute; inset: 0; background: rgba(27,36,30,0.65);
+    display: flex; align-items: center; justify-content: center; z-index: 2;
+  }
+  .sold-badge span {
+    font-family: var(--font-heading); font-weight: 700; font-size: 20px;
+    color: #ffffff; border: 2px solid #8B1E14; background: #C0392B;
+    padding: 8px 24px; border-radius: 999px; letter-spacing: 0.08em;
+    transform: rotate(-8deg);
   }
 
   .name-plate {
-    text-align: center;
-    padding: 18px 20px 4px;
+    text-align: center; padding: 18px 20px 4px;
     border-bottom: 1px dashed var(--line);
   }
-
   .name-plate h2 {
-    font-family: var(--font-heading);
-    font-size: 22px;
-    font-weight: 600;
-    margin: 0 0 4px;
-    color: var(--ink);
+    font-family: var(--font-heading); font-size: 22px; font-weight: 600;
+    margin: 0 0 4px; color: var(--ink);
   }
-
-  .name-plate .price {
-    font-size: 14px;
-    color: var(--gold-dim);
-    font-weight: 600;
-  }
+  .name-plate .price { font-size: 14px; color: var(--gold-dim); font-weight: 600; }
 
   .video-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: 8px;
-    font-family: var(--font-body);
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--rust);
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
+    display: inline-flex; align-items: center; gap: 6px; margin-top: 8px;
+    font-family: var(--font-body); font-size: 13px; font-weight: 600;
+    color: var(--rust); text-decoration: none; border-bottom: 1px solid transparent;
     transition: border-color 0.2s ease, color 0.2s ease;
-    cursor: pointer;
-    background: none;
-    border: none;
-    padding: 0;
-    margin-left: auto;
-    margin-right: auto;
+    cursor: pointer; background: none; border: none; padding: 0;
+    margin-left: auto; margin-right: auto;
   }
+  .video-link:hover { border-color: var(--rust); color: var(--gold-dim); }
+  .video-link svg { width: 14px; height: 14px; flex-shrink: 0; }
 
-  .video-link:hover {
-    border-color: var(--rust);
-    color: var(--gold-dim);
-  }
-
-  .video-link svg {
-    width: 14px;
-    height: 14px;
-    flex-shrink: 0;
-  }
-
+  /* ---------- Redesigned info block (below name-plate) ---------- */
   .details {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 0;
+    grid-template-columns: 1fr 1fr;
     flex: 1;
   }
+  @media (max-width: 480px) { .details { grid-template-columns: 1fr; } }
 
-  @media (max-width: 480px) {
-    .details { grid-template-columns: 1fr; }
-  }
-
-  .content {
+  .info-block {
     padding: 18px 20px;
+    position: relative;
   }
+  .info-block + .info-block {
+    border-left: 1px dashed var(--line);
+  }
+  @media (max-width: 480px) {
+    .info-block + .info-block {
+      border-left: none;
+      border-top: 1px dashed var(--line);
+    }
+  }
+  .info-block.origin-block { background: var(--card-bg-alt); }
 
-  .content p {
-    font-size: 14px;
+  .info-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .info-icon {
+    width: 22px; height: 22px; flex-shrink: 0;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(122,59,46,0.12);
+  }
+  .origin-block .info-icon { background: rgba(200,155,60,0.16); }
+  .info-icon svg { width: 12px; height: 12px; }
+  .content-block .info-icon svg { stroke: var(--rust); fill: none; }
+  .origin-block .info-icon svg { stroke: var(--gold-dim); fill: none; }
+
+  .info-label {
+    font-family: var(--font-heading);
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--rust);
+    text-transform: none;
+  }
+  .origin-block .info-label { color: var(--gold-dim); }
+
+  .info-block p {
+    font-size: 13.5px;
     line-height: 1.8;
     color: var(--ink-soft);
     margin: 0;
   }
 
-  .origin {
-    background: var(--card-bg-alt);
-    padding: 18px 18px;
-    border-left: 1px solid var(--line);
-  }
-
-  .origin .origin-label {
-    font-family: var(--font-heading);
-    font-size: 12px;
-    color: var(--rust);
-    letter-spacing: 0.08em;
-    margin-bottom: 6px;
-    display: block;
-  }
-
-  .origin p {
-    font-size: 13px;
-    line-height: 1.75;
-    color: var(--ink-soft);
-    margin: 0;
-    font-style: normal;
-  }
-
-  .cta-wrap {
-    text-align: center;
-    margin: 64px 24px 0;
-  }
-
+  .cta-wrap { text-align: center; margin: 64px 24px 0; }
   .cta {
-    display: inline-block;
-    background: var(--gold);
-    color: #1B241E;
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: 17px;
-    padding: 16px 44px;
-    border-radius: 999px;
-    text-decoration: none;
-    letter-spacing: 0.02em;
-    transition: background 0.25s ease, transform 0.25s ease;
+    display: inline-block; background: var(--gold); color: #1B241E;
+    font-family: var(--font-heading); font-weight: 700; font-size: 17px;
+    padding: 16px 44px; border-radius: 999px; text-decoration: none;
+    letter-spacing: 0.02em; transition: background 0.25s ease, transform 0.25s ease;
   }
-
-  .cta:hover {
-    background: #E0B65A;
-    transform: translateY(-2px);
-  }
-
-  .cta-note {
-    color: rgba(246,239,227,0.5);
-    font-size: 13px;
-    margin-top: 14px;
-  }
+  .cta:hover { background: #E0B65A; transform: translateY(-2px); }
+  .cta-note { color: rgba(246,239,227,0.5); font-size: 13px; margin-top: 14px; }
 
   /* ===== Video Modal ===== */
   .video-modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(10, 12, 10, 0.88);
-    z-index: 999;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
+    display: none; position: fixed; inset: 0;
+    background: rgba(10, 12, 10, 0.88); z-index: 999;
+    align-items: center; justify-content: center; padding: 24px;
   }
-
-  .video-modal.open {
-    display: flex;
-  }
-
-  .video-modal-box {
-    position: relative;
-    width: 100%;
-    max-width: 860px;
-  }
-
+  .video-modal.open { display: flex; }
+  .video-modal-box { position: relative; width: 100%; max-width: 860px; }
   .video-modal-frame {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: #000;
-    border-radius: 6px;
-    overflow: hidden;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-    border: 1px solid rgba(200,155,60,0.35);
+    position: relative; width: 100%; aspect-ratio: 16 / 9;
+    background: #000; border-radius: 6px; overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5); border: 1px solid rgba(200,155,60,0.35);
   }
-
-  .video-modal-frame iframe,
-  .video-modal-frame video {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-    display: block;
+  .video-modal-frame iframe, .video-modal-frame video {
+    position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block;
   }
-
   .video-modal-close {
-    position: absolute;
-    top: -44px;
-    right: 0;
-    background: none;
-    border: 1px solid rgba(246,239,227,0.4);
-    color: #F6EFE3;
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    font-size: 18px;
-    line-height: 1;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: absolute; top: -44px; right: 0; background: none;
+    border: 1px solid rgba(246,239,227,0.4); color: #F6EFE3;
+    width: 34px; height: 34px; border-radius: 50%; font-size: 18px; line-height: 1;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
     transition: background 0.2s ease, border-color 0.2s ease;
   }
-
-  .video-modal-close:hover {
-    background: rgba(246,239,227,0.12);
-    border-color: var(--gold);
-  }
-  .card-image {
-  position: relative; /* มีอยู่แล้ว ไม่ต้องเพิ่มซ้ำ */
-}
-
-.sold-badge {
-  position: absolute;
-  inset: 0;
-  background: rgba(27,36,30,0.65);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-}
-
-.sold-badge span {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 20px;
-  color: #ffffff;
-  border: 2px solid #8B1E14;
-  background: #C0392B;
-  padding: 8px 24px;
-  border-radius: 999px;
-  letter-spacing: 0.08em;
-  transform: rotate(-8deg);
-}
+  .video-modal-close:hover { background: rgba(246,239,227,0.12); border-color: var(--gold); }
 </style>
 </head>
 <body>
 
-  <!-- ============================================================
-       🏷️ โลโก้ + ชื่อร้าน (แก้ไขตรงนี้)
-       - src="LOGO.jpg"  -> เปลี่ยนเป็นชื่อไฟล์โลโก้ของคุณ
-       - ข้อความใน .brand-name -> เปลี่ยนเป็นชื่อร้านของคุณ
-       ============================================================ -->
   <div class="brand-bar">
     <div class="brand-logo">
       <img src="Photoroom_25690825_233512.PNG" alt="">
@@ -413,7 +274,7 @@
   <header>
     <span class="eyebrow">ສັດລ້ຽງຂອງເຮົາ</span>
     <h1>ລາຍການສັດ</h1>
-    <p>ສັດແຕ່ລະໂຕມີທີ່ມາຂອງມັນເອງ — ເລືອກເບິ່ງ ເລື່ອງລາວ ແລະ ລາຍລະຽດສັດແຕ່ລະໂຕທາງດ້ານລຸ່ມໄດ້ເລີຍ</p>
+    <p>ສັດແຕ່ລະໂຕມີທີ່ມາຂອງມັນເອງ — ເລືອກເບິ່ງເລື່ອງລາວ ແລະ ລາຍລະອຽດສັດແຕ່ລະໂຕທາງດ້ານລຸ່ມໄດ້ເລີຍ</p>
   </header>
 
   <div class="gallery">
@@ -422,7 +283,9 @@
       <div class="card-image">
         <span class="index-tag">01</span>
         <img src=" Tiger.jpg " alt="สินค้า 1">
-        <div class="sold-badge"><span>ขายแล้ว</span></div>
+        <span class="frame-corner tl"></span>
+        <span class="frame-corner br"></span>
+        <div class="sold-badge"><span>ຂາຍແລ້ວ</span></div>
       </div>
       <div class="name-plate">
         <h2>ເສືອສະມິງ</h2>
@@ -433,11 +296,18 @@
         </button>
       </div>
       <div class="details">
-        <div class="content">
-          <p>ທີ່ມາຂອງສັດ: ມາຈາກປ່າດົງດິບມັກກິນຄົນເປັນອາຫານ</p>
+        <div class="info-block content-block">
+          <div class="info-head">
+            <span class="info-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c4-6 8-9 9-16 1 7 5 10 9 16"/></svg></span>
+            <span class="info-label">ທີ່ມາຂອງສັດ</span>
+          </div>
+          <p>ມາຈາກປ່າດົງດິບ ມັກກິນຄົນເປັນອາຫານ</p>
         </div>
-        <div class="origin">
-          <span class="origin-label">ຄວາມເປັນມາຂອງສັດ</span>
+        <div class="info-block origin-block">
+          <div class="info-head">
+            <span class="info-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/><circle cx="12" cy="12" r="4"/></svg></span>
+            <span class="info-label">ຄວາມເປັນມາ</span>
+          </div>
           <p>ອອກກາເວັນບໍ່ໄດ້ ອອກລ່າແຕ່ກາງຄືນ</p>
         </div>
       </div>
@@ -447,6 +317,8 @@
       <div class="card-image">
         <span class="index-tag">02</span>
         <img src=" Tiger.jpg " alt="สินค้า 2">
+        <span class="frame-corner tl"></span>
+        <span class="frame-corner br"></span>
       </div>
       <div class="name-plate">
         <h2>ເສືອສະມິງ</h2>
@@ -457,11 +329,18 @@
         </button>
       </div>
       <div class="details">
-        <div class="content">
-          <p>ທີ່ມາຂອງສັດ: ມາຈາກປ່າດົງດິບມັກກິນຄົນເປັນອາຫານ</p>
+        <div class="info-block content-block">
+          <div class="info-head">
+            <span class="info-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c4-6 8-9 9-16 1 7 5 10 9 16"/></svg></span>
+            <span class="info-label">ທີ່ມາຂອງສັດ</span>
+          </div>
+          <p>ມາຈາກປ່າດົງດິບ ມັກກິນຄົນເປັນອາຫານ</p>
         </div>
-        <div class="origin">
-          <span class="origin-label">ຄວາມເປັນມາຂອງສັດ</span>
+        <div class="info-block origin-block">
+          <div class="info-head">
+            <span class="info-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/><circle cx="12" cy="12" r="4"/></svg></span>
+            <span class="info-label">ຄວາມເປັນມາ</span>
+          </div>
           <p>ອອກກາເວັນບໍ່ໄດ້ ອອກລ່າແຕ່ກາງຄືນ</p>
         </div>
       </div>
@@ -471,6 +350,8 @@
       <div class="card-image">
         <span class="index-tag">03</span>
         <img src=" Tiger.jpg " alt="สินค้า 3">
+        <span class="frame-corner tl"></span>
+        <span class="frame-corner br"></span>
       </div>
       <div class="name-plate">
         <h2>ເສືອສະມິງ</h2>
@@ -481,11 +362,18 @@
         </button>
       </div>
       <div class="details">
-        <div class="content">
-          <p>ທີ່ມາຂອງສັດ: ມາຈາກປ່າດົງດິບມັກກິນຄົນເປັນອາຫານ</p>
+        <div class="info-block content-block">
+          <div class="info-head">
+            <span class="info-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c4-6 8-9 9-16 1 7 5 10 9 16"/></svg></span>
+            <span class="info-label">ທີ່ມາຂອງສັດ</span>
+          </div>
+          <p>ມາຈາກປ່າດົງດິບ ມັກກິນຄົນເປັນອາຫານ</p>
         </div>
-        <div class="origin">
-          <span class="origin-label">ຄວາມເປັນມາຂອງສັດ</span>
+        <div class="info-block origin-block">
+          <div class="info-head">
+            <span class="info-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/><circle cx="12" cy="12" r="4"/></svg></span>
+            <span class="info-label">ຄວາມເປັນມາ</span>
+          </div>
           <p>ອອກກາເວັນບໍ່ໄດ້ ອອກລ່າແຕ່ກາງຄືນ</p>
         </div>
       </div>
@@ -495,6 +383,8 @@
       <div class="card-image">
         <span class="index-tag">04</span>
         <img src=" Tiger.jpg " alt="สินค้า 4">
+        <span class="frame-corner tl"></span>
+        <span class="frame-corner br"></span>
       </div>
       <div class="name-plate">
         <h2>ເສືອສະມິງ</h2>
@@ -505,11 +395,18 @@
         </button>
       </div>
       <div class="details">
-        <div class="content">
-          <p>ທີ່ມາຂອງສັດ: ມາຈາກປ່າດົງດິບມັກກິນຄົນເປັນອາຫານ</p>
+        <div class="info-block content-block">
+          <div class="info-head">
+            <span class="info-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c4-6 8-9 9-16 1 7 5 10 9 16"/></svg></span>
+            <span class="info-label">ທີ່ມາຂອງສັດ</span>
+          </div>
+          <p>ມາຈາກປ່າດົງດິບ ມັກກິນຄົນເປັນອາຫານ</p>
         </div>
-        <div class="origin">
-          <span class="origin-label">ຄວາມເປັນມາຂອງສັດ</span>
+        <div class="info-block origin-block">
+          <div class="info-head">
+            <span class="info-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/><circle cx="12" cy="12" r="4"/></svg></span>
+            <span class="info-label">ຄວາມເປັນມາ</span>
+          </div>
           <p>ອອກກາເວັນບໍ່ໄດ້ ອອກລ່າແຕ່ກາງຄືນ</p>
         </div>
       </div>
@@ -519,10 +416,9 @@
 
   <div class="cta-wrap">
     <a href="#" class="cta">ສັ່ງຊື້ເລີຍ</a>
-    <div class="cta-note">ຄິກເພື່ອສັ່ງຊື້ ຫຼື ຕິດສອບຖາມ</div>
+    <div class="cta-note">ຄິກເພື່ອສັ່ງຊື້ ຫຼື ຕິດຕໍ່ສອບຖາມ</div>
   </div>
 
-  <!-- ===== Video Modal ===== -->
   <div class="video-modal" id="videoModal">
     <div class="video-modal-box">
       <button type="button" class="video-modal-close" id="videoModalClose" aria-label="ປິດ">&times;</button>
@@ -537,14 +433,10 @@
       const closeBtn = document.getElementById('videoModalClose');
       const buttons = document.querySelectorAll('.video-link[data-video]');
 
-      function isYouTube(url) {
-        return /youtube\.com|youtu\.be/i.test(url);
-      }
+      function isYouTube(url) { return /youtube\.com|youtu\.be/i.test(url); }
 
       function getGoogleDriveEmbedUrl(url) {
-        // ຮອງຮັບລິ້ງແບບ .../file/d/FILE_ID/view... ຫຼື ...?id=FILE_ID
-        const match = url.match(/drive\.google\.com\/file\/d\/([^/]+)/) ||
-                      url.match(/[?&]id=([^&]+)/);
+        const match = url.match(/drive\.google\.com\/file\/d\/([^/]+)/) || url.match(/[?&]id=([^&]+)/);
         if (match && /drive\.google\.com/i.test(url)) {
           return `https://drive.google.com/file/d/${match[1]}/preview`;
         }
@@ -554,7 +446,6 @@
       function openModal(url) {
         frame.innerHTML = '';
         const driveEmbedUrl = getGoogleDriveEmbedUrl(url);
-
         if (isYouTube(url)) {
           const iframe = document.createElement('iframe');
           iframe.src = url + (url.includes('?') ? '&' : '?') + 'autoplay=1';
@@ -569,18 +460,13 @@
           frame.appendChild(iframe);
         } else {
           const video = document.createElement('video');
-          video.src = url;
-          video.controls = true;
-          video.autoplay = true;
+          video.src = url; video.controls = true; video.autoplay = true;
           frame.appendChild(video);
         }
         modal.classList.add('open');
       }
 
-      function closeModal() {
-        modal.classList.remove('open');
-        frame.innerHTML = '';
-      }
+      function closeModal() { modal.classList.remove('open'); frame.innerHTML = ''; }
 
       buttons.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -590,16 +476,10 @@
       });
 
       closeBtn.addEventListener('click', closeModal);
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
-      });
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeModal();
-      });
+      modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
     })();
   </script>
 
-</body>
-</html>
 </body>
 </html>
