@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>รายการสินค้า</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Lao:wght@400;600;700&family=Noto+Sans+Lao:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #1B241E;
+    --card-bg: #F6EFE3;
+    --card-bg-alt: #EFE6D3;
+    --ink: #2B2418;
+    --ink-soft: #5A5142;
+    --gold: #C89B3C;
+    --gold-dim: #9C7A2D;
+    --rust: #7A3B2E;
+    --line: rgba(43,36,24,0.18);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    background-image:
+      radial-gradient(circle at 15% 10%, rgba(200,155,60,0.08), transparent 40%),
+      radial-gradient(circle at 85% 90%, rgba(200,155,60,0.06), transparent 45%);
+    font-family: 'Noto Sans Lao', sans-serif;
+    color: var(--ink);
+    padding: 0 0 80px;
+  }
+
+  header {
+    text-align: center;
+    padding: 72px 24px 48px;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-family: 'Noto Sans Lao', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    border: 1px solid rgba(200,155,60,0.4);
+    padding: 6px 18px;
+    border-radius: 999px;
+    margin-bottom: 22px;
+  }
+
+  h1 {
+    font-family: 'Noto Serif Lao', serif;
+    font-weight: 700;
+    font-size: clamp(32px, 5vw, 52px);
+    color: #F6EFE3;
+    margin: 0 0 12px;
+  }
+
+  header p {
+    color: rgba(246,239,227,0.65);
+    font-size: 16px;
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  .gallery {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+
+  @media (max-width: 720px) {
+    .gallery { grid-template-columns: 1fr; }
+  }
+
+  .card {
+    background: var(--card-bg);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 26px 54px rgba(0,0,0,0.45);
+  }
+
+  .card-image {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(135deg, #3a3226, #241f18);
+    overflow: hidden;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .index-tag {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: rgba(27,36,30,0.75);
+    color: var(--gold);
+    font-family: 'Noto Serif Lao', serif;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    padding: 5px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(200,155,60,0.5);
+  }
+
+  .name-plate {
+    text-align: center;
+    padding: 18px 20px 4px;
+    border-bottom: 1px dashed var(--line);
+  }
+
+  .name-plate h2 {
+    font-family: 'Noto Serif Lao', serif;
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0 0 4px;
+    color: var(--ink);
+  }
+
+  .name-plate .price {
+    font-size: 14px;
+    color: var(--gold-dim);
+    font-weight: 600;
+  }
+
+  .video-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    font-family: 'Noto Sans Lao', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--rust);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .video-link:hover {
+    border-color: var(--rust);
+    color: var(--gold-dim);
+  }
+
+  .video-link svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+
+  .details {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 0;
+    flex: 1;
+  }
+
+  @media (max-width: 480px) {
+    .details { grid-template-columns: 1fr; }
+  }
+
+  .content {
+    padding: 18px 20px;
+  }
+
+  .content p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .origin {
+    background: var(--card-bg-alt);
+    padding: 18px 18px;
+    border-left: 1px solid var(--line);
+  }
+
+  .origin .origin-label {
+    font-family: 'Noto Serif Lao', serif;
+    font-size: 12px;
+    color: var(--rust);
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .origin p {
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    margin: 0;
+    font-style: normal;
+  }
+
+  .cta-wrap {
+    text-align: center;
+    margin: 64px 24px 0;
+  }
+
+  .cta {
+    display: inline-block;
+    background: var(--gold);
+    color: #1B241E;
+    font-family: 'Noto Serif Lao', serif;
+    font-weight: 700;
+    font-size: 17px;
+    padding: 16px 44px;
+    border-radius: 999px;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: background 0.25s ease, transform 0.25s ease;
+  }
+
+  .cta:hover {
+    background: #E0B65A;
+    transform: translateY(-2px);
+  }
+
+  .cta-note {
+    color: rgba(246,239,227,0.5);
+    font-size: 13px;
+    margin-top: 14px;
+  }
+</style>
+</head>
+<body>
+
+  <header>
+    <span class="eyebrow">คอลเลกชันของเรา</span>
+    <h1>รายการสินค้า</h1>
+    <p>สินค้าแต่ละชิ้นมีที่มาของมันเอง — เลือกชม เรื่องราว และรายละเอียดของแต่ละรายการด้านล่าง</p>
+  </header>
+
+  <div class="gallery">
+
+    <div class="card">
+      <div class="card-image">
+        <span class="index-tag">01</span>
+        <img src="https://placehold.co/600x450/3a3226/C89B3C?text=รูปสินค้า+1" alt="สินค้า 1">
+      </div>
+      <div class="name-plate">
+        <h2>ชื่อสินค้า 1</h2>
+        <div class="price">ราคา ___ กีบ / บาท</div>
+        <a href="#" class="video-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          ดูวิดีโอ
+        </a>
+      </div>
+      <div class="details">
+        <div class="content">
+          <p>คำอธิบายสินค้า: ใส่รายละเอียด วัตถุดิบ หรือจุดเด่นของสินค้าตรงนี้ ให้ลูกค้าเห็นภาพว่าสินค้าคืออะไรและดีอย่างไร</p>
+        </div>
+        <div class="origin">
+          <span class="origin-label">ความเป็นมา</span>
+          <p>เล่าเรื่องราวเบื้องหลังสินค้าชิ้นนี้ เช่น สูตรดั้งเดิม แรงบันดาลใจ หรือเหตุผลที่เริ่มทำสินค้านี้ขึ้นมา</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-image">
+        <span class="index-tag">02</span>
+        <img src="https://placehold.co/600x450/3a3226/C89B3C?text=รูปสินค้า+2" alt="สินค้า 2">
+      </div>
+      <div class="name-plate">
+        <h2>ชื่อสินค้า 2</h2>
+        <div class="price">ราคา ___ กีบ / บาท</div>
+        <a href="#" class="video-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          ดูวิดีโอ
+        </a>
+      </div>
+      <div class="details">
+        <div class="content">
+          <p>คำอธิบายสินค้า: ใส่รายละเอียด วัตถุดิบ หรือจุดเด่นของสินค้าตรงนี้ ให้ลูกค้าเห็นภาพว่าสินค้าคืออะไรและดีอย่างไร</p>
+        </div>
+        <div class="origin">
+          <span class="origin-label">ความเป็นมา</span>
+          <p>เล่าเรื่องราวเบื้องหลังสินค้าชิ้นนี้ เช่น สูตรดั้งเดิม แรงบันดาลใจ หรือเหตุผลที่เริ่มทำสินค้านี้ขึ้นมา</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-image">
+        <span class="index-tag">03</span>
+        <img src="https://placehold.co/600x450/3a3226/C89B3C?text=รูปสินค้า+3" alt="สินค้า 3">
+      </div>
+      <div class="name-plate">
+        <h2>ชื่อสินค้า 3</h2>
+        <div class="price">ราคา ___ กีบ / บาท</div>
+        <a href="#" class="video-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          ดูวิดีโอ
+        </a>
+      </div>
+      <div class="details">
+        <div class="content">
+          <p>คำอธิบายสินค้า: ใส่รายละเอียด วัตถุดิบ หรือจุดเด่นของสินค้าตรงนี้ ให้ลูกค้าเห็นภาพว่าสินค้าคืออะไรและดีอย่างไร</p>
+        </div>
+        <div class="origin">
+          <span class="origin-label">ความเป็นมา</span>
+          <p>เล่าเรื่องราวเบื้องหลังสินค้าชิ้นนี้ เช่น สูตรดั้งเดิม แรงบันดาลใจ หรือเหตุผลที่เริ่มทำสินค้านี้ขึ้นมา</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-image">
+        <span class="index-tag">04</span>
+        <img src="https://placehold.co/600x450/3a3226/C89B3C?text=รูปสินค้า+4" alt="สินค้า 4">
+      </div>
+      <div class="name-plate">
+        <h2>ชื่อสินค้า 4</h2>
+        <div class="price">ราคา ___ กีบ / บาท</div>
+        <a href="#" class="video-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          ดูวิดีโอ
+        </a>
+      </div>
+      <div class="details">
+        <div class="content">
+          <p>คำอธิบายสินค้า: ใส่รายละเอียด วัตถุดิบ หรือจุดเด่นของสินค้าตรงนี้ ให้ลูกค้าเห็นภาพว่าสินค้าคืออะไรและดีอย่างไร</p>
+        </div>
+        <div class="origin">
+          <span class="origin-label">ความเป็นมา</span>
+          <p>เล่าเรื่องราวเบื้องหลังสินค้าชิ้นนี้ เช่น สูตรดั้งเดิม แรงบันดาลใจ หรือเหตุผลที่เริ่มทำสินค้านี้ขึ้นมา</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cta-wrap">
+    <a href="#" class="cta">สั่งซื้อเลย</a>
+    <div class="cta-note">คลิกเพื่อสั่งซื้อหรือติดต่อสอบถาม</div>
+  </div>
+
+</body>
+</html>
