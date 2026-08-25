@@ -157,6 +157,12 @@
     text-decoration: none;
     border-bottom: 1px solid transparent;
     transition: border-color 0.2s ease, color 0.2s ease;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .video-link:hover {
@@ -244,6 +250,73 @@
     font-size: 13px;
     margin-top: 14px;
   }
+
+  /* ===== Video Modal ===== */
+  .video-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 12, 10, 0.88);
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  .video-modal.open {
+    display: flex;
+  }
+
+  .video-modal-box {
+    position: relative;
+    width: 100%;
+    max-width: 860px;
+  }
+
+  .video-modal-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    border: 1px solid rgba(200,155,60,0.35);
+  }
+
+  .video-modal-frame iframe,
+  .video-modal-frame video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+
+  .video-modal-close {
+    position: absolute;
+    top: -44px;
+    right: 0;
+    background: none;
+    border: 1px solid rgba(246,239,227,0.4);
+    color: #F6EFE3;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .video-modal-close:hover {
+    background: rgba(246,239,227,0.12);
+    border-color: var(--gold);
+  }
 </style>
 </head>
 <body>
@@ -264,10 +337,10 @@
       <div class="name-plate">
         <h2>ชื่อสินค้า 1</h2>
         <div class="price">ราคา ___ กีบ / บาท</div>
-        <a href="#" class="video-link">
+        <button type="button" class="video-link" data-video="https://www.youtube.com/embed/VIDEO_ID_1">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
           ดูวิดีโอ
-        </a>
+        </button>
       </div>
       <div class="details">
         <div class="content">
@@ -288,10 +361,10 @@
       <div class="name-plate">
         <h2>ชื่อสินค้า 2</h2>
         <div class="price">ราคา ___ กีบ / บาท</div>
-        <a href="#" class="video-link">
+        <button type="button" class="video-link" data-video="https://www.youtube.com/embed/VIDEO_ID_2">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
           ดูวิดีโอ
-        </a>
+        </button>
       </div>
       <div class="details">
         <div class="content">
@@ -312,10 +385,10 @@
       <div class="name-plate">
         <h2>ชื่อสินค้า 3</h2>
         <div class="price">ราคา ___ กีบ / บาท</div>
-        <a href="#" class="video-link">
+        <button type="button" class="video-link" data-video="https://www.youtube.com/embed/VIDEO_ID_3">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
           ดูวิดีโอ
-        </a>
+        </button>
       </div>
       <div class="details">
         <div class="content">
@@ -336,10 +409,10 @@
       <div class="name-plate">
         <h2>ชื่อสินค้า 4</h2>
         <div class="price">ราคา ___ กีบ / บาท</div>
-        <a href="#" class="video-link">
+        <button type="button" class="video-link" data-video="https://www.youtube.com/embed/VIDEO_ID_4">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
           ดูวิดีโอ
-        </a>
+        </button>
       </div>
       <div class="details">
         <div class="content">
@@ -358,6 +431,68 @@
     <a href="#" class="cta">สั่งซื้อเลย</a>
     <div class="cta-note">คลิกเพื่อสั่งซื้อหรือติดต่อสอบถาม</div>
   </div>
+
+  <!-- ===== Video Modal ===== -->
+  <div class="video-modal" id="videoModal">
+    <div class="video-modal-box">
+      <button type="button" class="video-modal-close" id="videoModalClose" aria-label="ปิด">&times;</button>
+      <div class="video-modal-frame" id="videoModalFrame"></div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const modal = document.getElementById('videoModal');
+      const frame = document.getElementById('videoModalFrame');
+      const closeBtn = document.getElementById('videoModalClose');
+      const buttons = document.querySelectorAll('.video-link[data-video]');
+
+      function isYouTube(url) {
+        return /youtube\.com|youtu\.be/i.test(url);
+      }
+
+      function openModal(url) {
+        frame.innerHTML = '';
+        if (isYouTube(url)) {
+          const iframe = document.createElement('iframe');
+          iframe.src = url + (url.includes('?') ? '&' : '?') + 'autoplay=1';
+          iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
+          iframe.allowFullscreen = true;
+          frame.appendChild(iframe);
+        } else {
+          const video = document.createElement('video');
+          video.src = url;
+          video.controls = true;
+          video.autoplay = true;
+          frame.appendChild(video);
+        }
+        modal.classList.add('open');
+      }
+
+      function closeModal() {
+        modal.classList.remove('open');
+        frame.innerHTML = '';
+      }
+
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const url = btn.getAttribute('data-video');
+          if (url) openModal(url);
+        });
+      });
+
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+      });
+    })();
+  </script>
+
+</body>
+</html>
 
 </body>
 </html>
